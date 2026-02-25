@@ -1,219 +1,314 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>The Locker Room – WMU Sports Bar</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Locker Room</title>
 
-<style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background-color: #f7f7f7;
-    }
+    <style>
+        /* COLORS */
+        :root {
+            --gold: #FFB700;
+            --brown: #4B2E14;
+            --black: #000000;
+            --white: #FFFFFF;
+        }
 
-    /* NAVIGATION */
-    nav {
-        background-color: #3b2f2f;
-        padding: 10px 25px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-    }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: var(--white);
+            color: var(--black);
+        }
 
-    .logo img {
-        height: 70px;
-        width: auto;
-    }
+        /* NAVBAR */
+        nav {
+            background: var(--brown);
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
 
-    nav .links a {
-        color: white;
-        margin-right: 25px;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 16px;
-    }
+        nav a {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
 
-    nav .order-btn {
-        background-color: #d4a017;
-        padding: 10px 18px;
-        border-radius: 6px;
-        color: #3b2f2f;
-        font-weight: bold;
-        text-decoration: none;
-    }
+        nav a:hover {
+            color: var(--white);
+        }
 
-    /* HEADER IMAGE */
-    .header {
-        width: 100%;
-        height: 380px;
-        background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4');
-        background-size: cover;
-        background-position: center;
-        filter: brightness(0.85);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+        /* HERO HEADER */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+        }
 
-    .header h1 {
-        color: white;
-        font-size: 48px;
-        text-shadow: 2px 2px 10px black;
-    }
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-    /* SECTIONS */
-    section {
-        padding: 40px 60px;
-    }
+        .hero-text {
+            position: absolute;
+            bottom: 20px;
+            left: 30px;
+            color: var(--gold);
+            text-shadow: 2px 2px 8px black;
+        }
 
-    h2 {
-        color: #3b2f2f;
-        border-bottom: 3px solid #d4a017;
-        display: inline-block;
-        padding-bottom: 5px;
-    }
+        .hero-text h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
 
-    .menu-item {
-        margin: 12px 0;
-        font-size: 18px;
-    }
+        .hero-text p {
+            font-size: 1.3rem;
+            margin: 5px 0;
+        }
 
-    .price {
-        float: right;
-        font-weight: bold;
-        color: #3b2f2f;
-    }
+        /* SECTION TITLES */
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--gold);
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
 
-    /* ORDER FORM */
-    .order-form input, .order-form textarea, .order-form select {
-        width: 100%;
-        padding: 10px;
-        margin: 8px 0 20px 0;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-    }
+        /* MENU CARDS */
+        .menu-card {
+            display: flex;
+            background: var(--white);
+            border: 2px solid var(--brown);
+            border-radius: 10px;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 900px;
+            overflow: hidden;
+        }
 
-    .submit-btn {
-        background-color: #d4a017;
-        color: #3b2f2f;
-        padding: 12px 20px;
-        border: none;
-        border-radius: 6px;
-        font-size: 18px;
-        font-weight: bold;
-        cursor: pointer;
-    }
+        .menu-card img {
+            width: 40%;
+            height: 200px;
+            object-fit: cover;
+        }
 
-    footer {
-        background-color: #3b2f2f;
-        color: white;
-        text-align: center;
-        padding: 20px;
-        margin-top: 40px;
-    }
-</style>
+        .menu-info {
+            padding: 20px;
+            width: 60%;
+        }
+
+        .menu-info h3 {
+            color: var(--brown);
+            margin-bottom: 10px;
+            font-size: 1.6rem;
+        }
+
+        .menu-info p {
+            margin: 5px 0;
+            font-size: 1.1rem;
+        }
+
+        /* ABOUT US */
+        .about-section {
+            width: 90%;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background: var(--white);
+            border: 2px solid var(--brown);
+            border-radius: 10px;
+        }
+
+        .about-section p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--brown);
+            color: var(--gold);
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- NAVIGATION -->
-<nav>
-    <div class="logo">
-        <img src="logo.png" alt="The Locker Room Logo">
-    </div>
-
-    <div class="links">
-        <a href="#home">Home</a>
+    <!-- NAVIGATION -->
+    <nav>
         <a href="#menu">Menu</a>
         <a href="#drinks">Drinks</a>
-        <a href="#happyhour">Happy Hour</a>
-        <a href="#contact">Contact</a>
+        <a href="#about">About Us</a>
+    </nav>
+
+    <!-- HERO HEADER -->
+    <div class="hero">
+        <img src="/images/header-bar.jpeg" alt="Sports Bar Header">
+        <div class="hero-text">
+            <h1>The Locker Room</h1>
+            <p>We major in gameday</p>
+            <p>Downtown Kalamazoo • Near the New Arena</p>
+        </div>
     </div>
 
-    <a class="order-btn" href="#ordernow">ORDER NOW</a>
-</nav>
+    <!-- MENU SECTION -->
+    <section id="menu">
+        <h2 class="section-title">Menu</h2>
 
-<!-- HEADER -->
-<div class="header" id="home">
-    <h1>The Locker Room</h1>
-</div>
+        <!-- CHICKEN WINGS -->
+        <div class="menu-card">
+            <img src="/images/wings.jpg" alt="Wings">
+            <div class="menu-info">
+                <h3>Chicken Wings</h3>
+                <p>Traditional Wings (6) — $8.99</p>
+                <p>Traditional Wings (12) — $14.99</p>
+                <p>Boneless Wings — $8.49</p>
+            </div>
+        </div>
 
-<!-- MENU SECTION -->
-<section id="menu">
-    <h2>Menu</h2>
+        <!-- PIZZA -->
+        <div class="menu-card">
+            <img src="/images/pizza.jpg" alt="Pizza">
+            <div class="menu-info">
+                <h3>Pizza</h3>
+                <p>Large Shareable Pizza — $14.99</p>
+            </div>
+        </div>
 
-    <div class="menu-item">Chicken Tenders <span class="price">$9.99</span></div>
-    <div class="menu-item">Mozzarella Sticks <span class="price">$7.49</span></div>
-    <div class="menu-item">Onion Rings <span class="price">$6.49</span></div>
-    <div class="menu-item">Pretzel Bites <span class="price">$7.49</span></div>
-    <div class="menu-item">Chips & Queso <span class="price">$6.99</span></div>
-    <div class="menu-item">Cheese Curds <span class="price">$7.29</span></div>
-    <div class="menu-item">Mini Corn Dogs <span class="price">$7.99</span></div>
-    <div class="menu-item">Tater Tots <span class="price">$5.49</span></div>
-    <div class="menu-item">Garlic Breadsticks <span class="price">$6.49</span></div>
-    <div class="menu-item">Side of Fries <span class="price">$3.99</span></div>
-</section>
+        <!-- BURGERS -->
+        <div class="menu-card">
+            <img src="/images/burger.jpg" alt="Burger">
+            <div class="menu-info">
+                <h3>Burgers</h3>
+                <p>Classic Cheeseburger — $9.99</p>
+                <p>Bacon Burger — $11.49</p>
+            </div>
+        </div>
 
-<!-- DRINKS -->
-<section id="drinks">
-    <h2>Drinks</h2>
+        <!-- SLIDERS -->
+        <div class="menu-card">
+            <img src="/images/sliders.jpg" alt="Sliders">
+            <div class="menu-info">
+                <h3>Sliders</h3>
+                <p>Cheeseburger Sliders (3) — $8.99</p>
+            </div>
+        </div>
 
-    <div class="menu-item">Coke <span class="price">$2.49</span></div>
-    <div class="menu-item">Sprite <span class="price">$2.49</span></div>
-    <div class="menu-item">Lemonade <span class="price">$2.99</span></div>
-    <div class="menu-item">Red Bull <span class="price">$3.99</span></div>
-</section>
+        <!-- LOADED NACHOS -->
+        <div class="menu-card">
+            <img src="/images/nachos.jpg" alt="Nachos">
+            <div class="menu-info">
+                <h3>Loaded Nachos</h3>
+                <p>Loaded Beef Nachos — $10.99</p>
+            </div>
+        </div>
 
-<!-- HAPPY HOUR -->
-<section id="happyhour">
-    <h2>Happy Hour</h2>
-    <p>Weekdays 3–6 PM</p>
-    <p>$3 Domestic Drafts • $5 Well Drinks • $6 Appetizers</p>
-</section>
+        <!-- LOADED FRIES -->
+        <div class="menu-card">
+            <img src="/images/loaded-fries.jpg" alt="Loaded Fries">
+            <div class="menu-info">
+                <h3>Loaded Fries</h3>
+                <p>Bacon Cheese Fries — $8.49</p>
+            </div>
+        </div>
+    </section>
 
-<!-- ORDER NOW -->
-<section id="ordernow">
-    <h2>Order for Pickup</h2>
+    <!-- DRINKS SECTION -->
+    <section id="drinks">
+        <h2 class="section-title">Drinks</h2>
 
-    <form class="order-form">
-        <label>Name</label>
-        <input type="text">
+        <!-- DRAFT BEER -->
+        <div class="menu-card">
+            <img src="/images/draft-beer.jpg" alt="Draft Beer">
+            <div class="menu-info">
+                <h3>Draft Beer</h3>
+                <p>Bud Light — $3.50</p>
+                <p>Miller Lite — $3.50</p>
+                <p>Coors Light — $3.50</p>
+                <p>Bell’s Two Hearted — $5.00</p>
+                <p>Oberon (Seasonal) — $5.00</p>
+            </div>
+        </div>
 
-        <label>Phone Number</label>
-        <input type="text">
+        <!-- COCKTAILS -->
+        <div class="menu-card">
+            <img src="/images/cocktail.jpg" alt="Cocktails">
+            <div class="menu-info">
+                <h3>Cocktails</h3>
+                <p>Vodka Cran — $6.00</p>
+                <p>Rum & Coke — $6.00</p>
+                <p>Tequila Sunrise — $7.00</p>
+                <p>Whiskey Sour — $7.00</p>
+                <p>Long Island — $8.00</p>
+            </div>
+        </div>
 
-        <label>Pickup Time</label>
-        <select>
-            <option>ASAP</option>
-            <option>In 15 minutes</option>
-            <option>In 30 minutes</option>
-            <option>In 45 minutes</option>
-        </select>
+        <!-- SHOTS -->
+        <div class="menu-card">
+            <img src="/images/shots.jpg" alt="Shots">
+            <div class="menu-info">
+                <h3>Shots</h3>
+                <p>Lemon Drop — $4.00</p>
+                <p>Green Tea Shot — $4.00</p>
+                <p>Fireball — $4.00</p>
+                <p>Tequila — $5.00</p>
+            </div>
+        </div>
 
-        <label>Your Order</label>
-        <textarea rows="6" placeholder="List items and quantities..."></textarea>
+        <!-- NON-ALCOHOLIC -->
+        <div class="menu-card">
+            <img src="/images/soda.jpg" alt="Soft Drinks">
+            <div class="menu-info">
+                <h3>Non‑Alcoholic Drinks</h3>
+                <p>Coke — $2.49</p>
+                <p>Sprite — $2.49</p>
+                <p>Lemonade — $2.99</p>
+                <p>Red Bull — $3.99</p>
+            </div>
+        </div>
+    </section>
 
-        <label>Special Instructions</label>
-        <textarea rows="4"></textarea>
+    <!-- ABOUT US -->
+    <section id="about" class="about-section">
+        <h2 class="section-title">About Us</h2>
 
-        <button class="submit-btn">Submit Order</button>
-    </form>
-</section>
+        <p>
+            The Locker Room is Kalamazoo’s newest Broncos‑themed sports bar, built for 
+            college students and anyone who lives for game day. Located downtown near the 
+            brand‑new arena, we’re the perfect spot to meet up before the puck drops, 
+            celebrate after a big win, or grab late‑night food with friends.
+        </p>
 
-<!-- CONTACT -->
-<section id="contact">
-    <h2>Contact</h2>
-    <p>123 Campus Drive, Kalamazoo, MI</p>
-    <p>(269) 555‑1234</p>
-</section>
+        <p>
+            Our theme is simple: Western Michigan pride, sports energy, and a welcoming 
+            college‑town atmosphere. With TVs everywhere, real bar food, and prices made 
+            for students, The Locker Room is designed to be your go‑to hangout.
+        </p>
 
-<footer>
-    © 2026 The Locker Room – Western Michigan Sports Bar
-</footer>
+        <p>
+            Whether you're here for wings, burgers, drinks, or just the vibe, one thing’s 
+            for sure — <strong>We major in gameday.</strong>
+        </p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        The Locker Room • Downtown Kalamazoo • We major in gameday
+    </footer>
 
 </body>
+</html>
+
 </html>
