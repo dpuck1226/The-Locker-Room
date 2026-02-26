@@ -1,568 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Locker Room | WMU</title>
-  <style>
-    :root {
-      --wmu-gold: #F1C500;
-      --wmu-brown: #532E1F;
-      --wmu-black: #000000;
-      --wmu-white: #FFFFFF;
-      --font-main: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
-      --font-size-base: 16px;
-      --font-size-lg: 2rem;
-      --font-size-md: 1.25rem;
-      --font-size-sm: 1rem;
-      --header-spacing: 2rem;
-      --card-radius: 12px;
-      --card-shadow: 0 2px 8px rgba(83,46,31,0.08);
-      --focus-outline: 3px solid var(--wmu-gold);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Locker Room</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #FFF4CC, #E6C878);
+            color: #000;
+        }
 
-    html {
-      box-sizing: border-box;
-      font-size: 100%;
-      background: var(--wmu-white);
-      color: var(--wmu-black);
-    }
-    *, *:before, *:after {
-      box-sizing: inherit;
-    }
-    body {
-      margin: 0;
-      font-family: var(--font-main);
-      font-size: var(--font-size-base);
-      background: var(--wmu-white);
-      color: var(--wmu-black);
-      line-height: 1.6;
-    }
+        /* Navigation */
+        nav {
+            background-color: #4B2E0F;
+            padding: 15px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
-    /* About Us at the Top */
-    .about-section {
-      background: var(--wmu-gold);
-      color: var(--wmu-brown);
-      padding: 2.5rem 1rem 2rem 1rem;
-      text-align: center;
-      border-bottom: 4px solid var(--wmu-brown);
-    }
-    .about-section h1 {
-      font-size: 2.5rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin: 0 0 1rem 0;
-    }
-    .about-section p {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin: 0 auto;
-      max-width: 700px;
-      letter-spacing: 0.02em;
-    }
+        /* Hero Section (unchanged) */
+        .hero {
+            width: 100%;
+            height: 350px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 2px 2px 6px black;
+            font-size: 3rem;
+            font-weight: bold;
+        }
 
-    /* Navigation Bar */
-    nav {
-      background: var(--wmu-brown);
-      color: var(--wmu-gold);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.5rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 8px rgba(83,46,31,0.10);
-    }
-    .nav-logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--wmu-gold);
-      text-decoration: none;
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    .nav-links li {
-      display: inline;
-    }
-    .nav-links a {
-      color: var(--wmu-gold);
-      text-decoration: none;
-      font-weight: bold;
-      text-transform: uppercase;
-      font-size: 1rem;
-      letter-spacing: 0.05em;
-      padding: 0.5rem 0.75rem;
-      border-radius: 6px;
-      transition: background 0.2s, color 0.2s;
-    }
-    .nav-links a:focus, .nav-links a:hover {
-      background: var(--wmu-gold);
-      color: var(--wmu-brown);
-      outline: var(--focus-outline);
-      outline-offset: 2px;
-    }
-    .order-now-btn {
-      background: var(--wmu-gold);
-      color: var(--wmu-brown);
-      font-weight: bold;
-      text-transform: uppercase;
-      font-size: 1rem;
-      border: none;
-      border-radius: 8px;
-      padding: 0.7rem 1.5rem;
-      margin-left: 1.5rem;
-      cursor: pointer;
-      box-shadow: 0 2px 8px rgba(83,46,31,0.10);
-      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-      letter-spacing: 0.08em;
-    }
-    .order-now-btn:focus, .order-now-btn:hover {
-      background: var(--wmu-brown);
-      color: var(--wmu-gold);
-      outline: var(--focus-outline);
-      outline-offset: 2px;
-      box-shadow: 0 4px 12px rgba(83,46,31,0.15);
-    }
+        /* Section Layout */
+        section {
+            padding: 40px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
 
-    /* Main Content */
-    main {
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    section {
-      margin-bottom: 3rem;
-    }
-    .section-title {
-      font-size: var(--font-size-lg);
-      font-weight: bold;
-      text-transform: uppercase;
-      color: var(--wmu-brown);
-      letter-spacing: 0.08em;
-      margin-bottom: 1.5rem;
-      margin-top: 0;
-      text-align: left;
-      border-left: 8px solid var(--wmu-gold);
-      padding-left: 1rem;
-    }
+        h2 {
+            text-align: center;
+            color: #4B2E0F;
+            margin-bottom: 25px;
+        }
 
-    /* Menu Grid */
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2rem;
-    }
-    .menu-card {
-      background: var(--wmu-white);
-      border-radius: var(--card-radius);
-      box-shadow: var(--card-shadow);
-      padding: 1.5rem 1.25rem;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      border: 2px solid var(--wmu-brown);
-      transition: box-shadow 0.2s, border-color 0.2s;
-    }
-    .menu-card:hover, .menu-card:focus-within {
-      box-shadow: 0 4px 16px rgba(83,46,31,0.18);
-      border-color: var(--wmu-gold);
-    }
-    .menu-card h3 {
-      font-size: var(--font-size-md);
-      font-weight: bold;
-      text-transform: uppercase;
-      color: var(--wmu-brown);
-      margin: 0 0 0.5rem 0;
-      letter-spacing: 0.06em;
-    }
-    .menu-card .menu-details {
-      font-size: var(--font-size-sm);
-      color: var(--wmu-black);
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-    }
-    .menu-card ul, .menu-card ol {
-      margin: 0.5rem 0 0 1.2rem;
-      padding: 0;
-      font-size: var(--font-size-sm);
-    }
-    .menu-card li {
-      margin-bottom: 0.25rem;
-    }
-    .menu-card .sub-label {
-      font-weight: bold;
-      color: var(--wmu-brown);
-      text-transform: uppercase;
-      margin-top: 0.5rem;
-      display: block;
-    }
+        /* Menu Cards */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
 
-    /* Specials & Events */
-    .specials-table, .events-table, .hours-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 1rem;
-      background: var(--wmu-white);
-      border-radius: var(--card-radius);
-      overflow: hidden;
-      box-shadow: var(--card-shadow);
-    }
-    .specials-table th, .events-table th, .hours-table th {
-      background: var(--wmu-gold);
-      color: var(--wmu-brown);
-      font-weight: bold;
-      text-transform: uppercase;
-      padding: 0.75rem;
-      letter-spacing: 0.06em;
-      font-size: 1rem;
-      border-bottom: 2px solid var(--wmu-brown);
-    }
-    .specials-table td, .events-table td, .hours-table td {
-      padding: 0.75rem;
-      font-size: 1rem;
-      color: var(--wmu-black);
-      border-bottom: 1px solid #e0e0e0;
-    }
-    .specials-table tr:last-child td, .events-table tr:last-child td, .hours-table tr:last-child td {
-      border-bottom: none;
-    }
-    .specials-table tr.highlight, .events-table tr.highlight {
-      background: #fffbe6;
-    }
-    .hours-table td.closed {
-      color: #bbb;
-      text-decoration: line-through;
-    }
+        .card {
+            background: white;
+            border: 2px solid #4B2E0F;
+            padding: 20px;
+            border-radius: 8px;
+        }
 
-    /* Responsive Design */
-    @media (max-width: 900px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 0.5rem 1rem;
-      }
-      .nav-links {
-        gap: 1rem;
-      }
-      main {
-        padding: 0 0.5rem;
-      }
-      .menu-grid {
-        gap: 1rem;
-      }
-    }
-    @media (max-width: 600px) {
-      .about-section h1 {
-        font-size: 1.5rem;
-      }
-      .about-section p {
-        font-size: 1rem;
-      }
-      .section-title {
-        font-size: 1.2rem;
-        padding-left: 0.5rem;
-      }
-      .menu-card {
-        padding: 1rem 0.5rem;
-      }
-      .specials-table th, .events-table th, .hours-table th,
-      .specials-table td, .events-table td, .hours-table td {
-        font-size: 0.95rem;
-        padding: 0.5rem;
-      }
-    }
+        .card h3 {
+            margin-top: 0;
+            color: #4B2E0F;
+        }
 
-    /* Print Styles */
-    @media print {
-      nav, .order-now-btn, .about-section {
-        display: none !important;
-      }
-      body, main {
-        background: #fff !important;
-        color: #000 !important;
-      }
-      .menu-card, .specials-table, .events-table, .hours-table {
-        box-shadow: none !important;
-        border: 1px solid #000 !important;
-      }
-      .section-title {
-        color: #000 !important;
-        border-left: 4px solid #000 !important;
-      }
-    }
-  </style>
+        .price {
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 8px;
+        }
+
+        /* Order Online Section */
+        #order {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        #order button {
+            background-color: #4B2E0F;
+            color: white;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        #order button:hover {
+            opacity: 0.85;
+        }
+    </style>
 </head>
+
 <body>
-  <!-- About Us at the Top -->
-  <header class="about-section">
-    <h1>The Locker Room</h1>
-    <p>
-      Welcome to The Locker Room—Kalamazoo’s home for bold flavors, big games, and Bronco pride! Inspired by the spirit of Western Michigan University, we serve up classic eats, signature drinks, and a lively atmosphere where every guest is part of the team. Whether you’re here for a game, a night out, or just great food and company, you’ll always find a seat in The Locker Room.
-    </p>
-  </header>
 
-  <!-- Navigation Bar -->
-  <nav aria-label="Main Navigation">
-    <a href="#" class="nav-logo">The Locker Room</a>
-    <ul class="nav-links">
-      <li><a href="#menu">Menu</a></li>
-      <li><a href="#specials">March Specials</a></li>
-      <li><a href="#events">Weekly Events</a></li>
-      <li><a href="#hours">Hours</a></li>
-      <li><button class="order-now-btn" aria-label="Order Now">Order Now</button></li>
-    </ul>
-  </nav>
+    <!-- NAVIGATION (unchanged) -->
+    <nav>
+        <ul>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#specials">March Specials</a></li>
+            <li><a href="#events">Weekly Events</a></li>
+            <li><a href="#hours">Hours</a></li>
+            <li><a href="#order">Order Now</a></li>
+        </ul>
+    </nav>
 
-  <main>
-    <!-- Menu Section -->
+    <!-- HERO SECTION (unchanged) -->
+    <div class="hero" style="background-image: url('your-hero-image.jpg');">
+        Welcome to The Locker Room
+    </div>
+
+    <!-- MENU SECTION -->
     <section id="menu">
-      <h2 class="section-title">Menu</h2>
-      <div class="menu-grid">
-        <!-- Entrées -->
-        <div class="menu-card" tabindex="0">
-          <h3>BURGERS</h3>
-          <div class="menu-details">Classic grilled burgers, served with your choice of toppings.</div>
+        <h2>Menu</h2>
+
+        <div class="menu-grid">
+
+            <!-- Burgers -->
+            <div class="card">
+                <h3>Burgers</h3>
+                <p class="price">$9.99</p>
+                <p>Juicy grilled burger with classic toppings.</p>
+            </div>
+
+            <!-- Sliders -->
+            <div class="card">
+                <h3>Sliders</h3>
+                <p class="price">$8.49</p>
+                <p>Mini grilled burgers served on soft buns.</p>
+            </div>
+
+            <!-- Wings -->
+            <div class="card">
+                <h3>Wings (6 ct)</h3>
+                <p class="price">$7.99</p>
+                <p>Crispy wings tossed in your choice of sauce.</p>
+            </div>
+
+            <div class="card">
+                <h3>Wings (12 ct)</h3>
+                <p class="price">$12.99</p>
+                <p>Double the wings with bold flavor.</p>
+            </div>
+
+            <!-- Chicken Tenders -->
+            <div class="card">
+                <h3>Chicken Tenders</h3>
+                <p class="price">$9.49</p>
+                <p>Hand‑breaded tenders served with dipping sauce.</p>
+            </div>
+
+            <!-- Pizza -->
+            <div class="card">
+                <h3>Cheese Pizza</h3>
+                <p class="price">$11.99</p>
+                <p>Crispy bar‑style crust with melted cheese.</p>
+            </div>
+
+            <div class="card">
+                <h3>Pepperoni Pizza</h3>
+                <p class="price">$12.99</p>
+                <p>Classic pepperoni on a crispy bar‑style crust.</p>
+            </div>
+
+            <div class="card">
+                <h3>Chicken Ranch Pizza</h3>
+                <p class="price">$13.49</p>
+                <p>Grilled chicken, ranch drizzle, and melted cheese.</p>
+            </div>
+
+            <!-- Bar Snacks -->
+            <div class="card">
+                <h3>Loaded Nachos</h3>
+                <p class="price">$9.49</p>
+                <p>Warm tortilla chips loaded with cheese and toppings.</p>
+            </div>
+
+            <div class="card">
+                <h3>Loaded Fries</h3>
+                <p class="price">$8.99</p>
+                <p>Crispy fries topped with cheese and bacon.</p>
+            </div>
+
+            <div class="card">
+                <h3>Mozzarella Sticks</h3>
+                <p class="price">$7.49</p>
+                <p>Golden fried mozzarella with marinara.</p>
+            </div>
+
+            <div class="card">
+                <h3>Onion Rings</h3>
+                <p class="price">$6.99</p>
+                <p>Thick‑cut onion rings fried to a crunch.</p>
+            </div>
+
+            <div class="card">
+                <h3>Pretzel Bites</h3>
+                <p class="price">$8.49</p>
+                <p>Soft pretzel bites served with warm cheese.</p>
+            </div>
+
+            <div class="card">
+                <h3>Chips & Queso</h3>
+                <p class="price">$6.49</p>
+                <p>Warm queso served with tortilla chips.</p>
+            </div>
+
+            <div class="card">
+                <h3>Cheese Curds</h3>
+                <p class="price">$7.99</p>
+                <p>Lightly fried cheese curds with dipping sauce.</p>
+            </div>
+
+            <div class="card">
+                <h3>Mini Corn Dogs</h3>
+                <p class="price">$7.49</p>
+                <p>Bite‑sized corn dogs fried golden brown.</p>
+            </div>
+
+            <div class="card">
+                <h3>Tater Tots</h3>
+                <p class="price">$5.99</p>
+                <p>Crispy golden tater tots.</p>
+            </div>
+
+            <div class="card">
+                <h3>Garlic Breadsticks</h3>
+                <p class="price">$6.49</p>
+                <p>Warm breadsticks brushed with garlic butter.</p>
+            </div>
+
         </div>
-        <div class="menu-card" tabindex="0">
-          <h3>PEPPERONI PIZZA</h3>
-          <div class="menu-details">Hand-tossed crust, zesty sauce, mozzarella, and pepperoni.</div>
-        </div>
-        <div class="menu-card" tabindex="0">
-          <h3>CHEESE PIZZA</h3>
-          <div class="menu-details">Classic cheese pizza with mozzarella and house sauce.</div>
-        </div>
-        <div class="menu-card" tabindex="0">
-          <h3>CHICKEN RANCH PIZZA</h3>
-          <div class="menu-details">Grilled chicken, ranch sauce, mozzarella, and cheddar.</div>
-        </div>
-        <div class="menu-card" tabindex="0">
-          <h3>CHICKEN WINGS</h3>
-          <span class="sub-label">Sizes:</span>
-          <ul>
-            <li>6ct, 12ct, 20ct, 40ct</li>
-          </ul>
-          <span class="sub-label">Type:</span>
-          <ul>
-            <li>Traditional or Boneless</li>
-          </ul>
-          <span class="sub-label">Flavors:</span>
-          <ul>
-            <li>Mild</li>
-            <li>Honey BBQ</li>
-            <li>Flaming Hot</li>
-            <li>Lemon Pepper</li>
-            <li>Unseasoned</li>
-          </ul>
-          <span class="sub-label">Sauces:</span>
-          <ul>
-            <li>Ranch</li>
-            <li>Blue Cheese</li>
-            <li>Honey Mustard</li>
-          </ul>
-        </div>
-        <!-- Appetizers -->
-        <div class="menu-card" tabindex="0">
-          <h3>LOADED NACHOS</h3>
-          <div class="menu-details">Tortilla chips, cheese, jalapeños, salsa, sour cream.</div>
-        </div>
-        <div class="menu-card" tabindex="0">
-          <h3>PRETZEL BITES & BEER CHEESE</h3>
-          <div class="menu-details">Warm pretzel bites served with creamy beer cheese dip.</div>
-        </div>
-        <div class="menu-card" tabindex="0">
-          <h3>FRIED PICKLES</h3>
-          <div class="menu-details">Crispy fried pickles with ranch dipping sauce.</div>
-        </div>
-        <div class="menu-card" tabindex="0">
-          <h3>CHIPS & SALSA OR GUACAMOLE</h3>
-          <div class="menu-details">Fresh tortilla chips with house salsa or guacamole.</div>
-        </div>
-        <!-- Signature Drinks -->
-        <div class="menu-card" tabindex="0">
-          <h3>SIGNATURE DRINKS</h3>
-          <ul>
-            <li>The Dirty Bronco</li>
-            <li>Brown and Gold Margarita</li>
-            <li>The Flaming Spur</li>
-          </ul>
-        </div>
-        <!-- Beer -->
-        <div class="menu-card" tabindex="0">
-          <h3>BEER</h3>
-          <ul>
-            <li>Budweiser</li>
-            <li>Bud Light</li>
-            <li>Coors Light</li>
-            <li>Miller Lite</li>
-            <li>Michelob Ultra</li>
-            <li>Twisted Tea</li>
-          </ul>
-        </div>
-        <!-- Liquor -->
-        <div class="menu-card" tabindex="0">
-          <h3>LIQUOR</h3>
-          <ul>
-            <li>Jim Beam</li>
-            <li>Jack Daniels</li>
-            <li>Crown Royal</li>
-            <li>Fireball</li>
-            <li>Smirnoff</li>
-            <li>Tito's</li>
-            <li>Grey Goose</li>
-            <li>Gin</li>
-            <li>Tequila</li>
-            <li>Shots & Double Shots</li>
-          </ul>
-        </div>
-      </div>
     </section>
 
-    <!-- March Specials Section -->
-    <section id="specials">
-      <h2 class="section-title">March Specials & St. Patrick's Day</h2>
-      <table class="specials-table" aria-label="March Specials">
-        <thead>
-          <tr>
-            <th scope="col">Special</th>
-            <th scope="col">Offer</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Bailey's</td>
-            <td>20% off</td>
-          </tr>
-          <tr>
-            <td>Jameson</td>
-            <td>20% off</td>
-          </tr>
-          <tr>
-            <td>Guinness</td>
-            <td>20% off</td>
-          </tr>
-          <tr class="highlight">
-            <td>The Kiss Me I'm Tipsy</td>
-            <td>St. Patrick's Day Signature Drink</td>
-          </tr>
-          <tr class="highlight">
-            <td>The Naughty Leprechaun</td>
-            <td>St. Patrick's Day Signature Drink</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>
-        Celebrate March with Irish-inspired specials! Enjoy 20% off Bailey's, Jameson, and Guinness all month long. On St. Patrick's Day, try our festive drinks: <strong>The Kiss Me I'm Tipsy</strong> and <strong>The Naughty Leprechaun</strong>.
-      </p>
+    <!-- ORDER ONLINE SECTION -->
+    <section id="order">
+        <h2>Order Online</h2>
+        <p>Online ordering coming soon!</p>
+        <button>Coming Soon</button>
     </section>
 
-    <!-- Weekly Events Section -->
-    <section id="events">
-      <h2 class="section-title">Weekly Events</h2>
-      <table class="events-table" aria-label="Weekly Events">
-        <thead>
-          <tr>
-            <th scope="col">Day</th>
-            <th scope="col">Event</th>
-            <th scope="col">Discount/Offer</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Tuesday</td>
-            <td>Tequila Tuesday</td>
-            <td>15% off tequila</td>
-          </tr>
-          <tr>
-            <td>Wednesday</td>
-            <td>Wasted Wednesday</td>
-            <td>10% off all drinks</td>
-          </tr>
-          <tr>
-            <td>Thursday</td>
-            <td>Thirsty Thursday</td>
-            <td>20% off all drinks</td>
-          </tr>
-          <tr>
-            <td>Friday</td>
-            <td>Fun Friday</td>
-            <td>10% off food & drinks<br><em>15% off if WMU has a game</em></td>
-          </tr>
-          <tr>
-            <td>Saturday</td>
-            <td>All Out Saturday</td>
-            <td>20% off food & drinks<br><em>25% off if WMU has a game</em><br>BOGO shots</td>
-          </tr>
-          <tr>
-            <td>Sunday</td>
-            <td>Reset Sunday</td>
-            <td>Regular pricing</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>
-        <strong>Every day brings something special at The Locker Room!</strong> From Tequila Tuesday’s spirited discounts to All Out Saturday’s game-day deals and BOGO shots, there’s always a reason to celebrate. On WMU game days, enjoy even bigger savings—bring your Bronco pride!
-      </p>
-    </section>
-
-    <!-- Hours of Operation Section -->
-    <section id="hours">
-      <h2 class="section-title">Hours of Operation</h2>
-      <table class="hours-table" aria-label="Hours of Operation">
-        <thead>
-          <tr>
-            <th scope="col">Day</th>
-            <th scope="col">Hours</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Monday</td>
-            <td class="closed">Closed</td>
-          </tr>
-          <tr>
-            <td>Tuesday</td>
-            <td>12pm–12am</td>
-          </tr>
-          <tr>
-            <td>Wednesday</td>
-            <td>12pm–2am</td>
-          </tr>
-          <tr>
-            <td>Thursday</td>
-            <td>12pm–2am</td>
-          </tr>
-          <tr>
-            <td>Friday</td>
-            <td>12pm–2am</td>
-          </tr>
-          <tr>
-            <td>Saturday</td>
-            <td>10am–2am</td>
-          </tr>
-          <tr>
-            <td>Sunday</td>
-            <td>12pm–10pm</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>
-        <strong>Note:</strong> Hours may vary on holidays or special event days. Please check our social media or call ahead for updates.
-      </p>
-    </section>
-  </main>
-
-  <footer style="background: var(--wmu-brown); color: var(--wmu-gold); text-align: center; padding: 1.5rem 0; font-size: 1rem;">
-    &copy; 2026 The Locker Room. All rights reserved. | Inspired by Western Michigan University
-  </footer>
 </body>
 </html>
