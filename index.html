@@ -563,6 +563,125 @@
 
   <footer style="background: var(--wmu-brown); color: var(--wmu-gold); text-align: center; padding: 1.5rem 0; font-size: 1rem;">
     &copy; 2026 The Locker Room. All rights reserved. | Inspired by Western Michigan University
+    <section id="order" style="padding:40px; background:#111; color:white;">
+  <h2 style="text-align:center; font-size:32px; margin-bottom:20px;">Order Now</h2>
+  <p style="text-align:center; margin-bottom:30px;">Select items to build a visual order. No submission required.</p>
+
+  <div id="orderForm" style="max-width:700px; margin:auto;">
+
+    <h3>Burgers</h3>
+    <label>Classic Burger ($9.99)
+      <input type="number" min="0" value="0" data-price="9.99">
+    </label>
+
+    <h3>Pizzas</h3>
+    <label>Pepperoni Pizza ($13.99)
+      <input type="number" min="0" value="0" data-price="13.99">
+    </label>
+    <label>Cheese Pizza ($11.99)
+      <input type="number" min="0" value="0" data-price="11.99">
+    </label>
+    <label>Chicken Ranch Pizza ($14.99)
+      <input type="number" min="0" value="0" data-price="14.99">
+    </label>
+
+    <h3>Wings</h3>
+    <label>6ct ($7.99)
+      <input type="number" min="0" value="0" data-price="7.99">
+    </label>
+    <label>12ct ($13.99)
+      <input type="number" min="0" value="0" data-price="13.99">
+    </label>
+    <label>20ct ($18.99)
+      <input type="number" min="0" value="0" data-price="18.99">
+    </label>
+    <label>40ct ($34.99)
+      <input type="number" min="0" value="0" data-price="34.99">
+    </label>
+
+    <h3>Appetizers</h3>
+    <label>Loaded Nachos ($9.99)
+      <input type="number" min="0" value="0" data-price="9.99">
+    </label>
+    <label>Pretzel Bites & Beer Cheese ($7.99)
+      <input type="number" min="0" value="0" data-price="7.99">
+    </label>
+    <label>Fried Pickles ($6.99)
+      <input type="number" min="0" value="0" data-price="6.99">
+    </label>
+    <label>Chips & Salsa ($4.99)
+      <input type="number" min="0" value="0" data-price="4.99">
+    </label>
+    <label>Chips & Guacamole ($6.99)
+      <input type="number" min="0" value="0" data-price="6.99">
+    </label>
+
+    <h3>Drinks</h3>
+    <label>The Dirty Bronco ($9.00)
+      <input type="number" min="0" value="0" data-price="9.00">
+    </label>
+    <label>Brown & Gold Margarita ($10.00)
+      <input type="number" min="0" value="0" data-price="10.00">
+    </label>
+    <label>The Flaming Spur ($11.00)
+      <input type="number" min="0" value="0" data-price="11.00">
+    </label>
+
+    <h3>Beer</h3>
+    <label>Budweiser ($4.50)
+      <input type="number" min="0" value="0" data-price="4.50">
+    </label>
+    <label>Bud Light ($4.50)
+      <input type="number" min="0" value="0" data-price="4.50">
+    </label>
+    <label>Coors Light ($4.50)
+      <input type="number" min="0" value="0" data-price="4.50">
+    </label>
+    <label>Miller Lite ($4.50)
+      <input type="number" min="0" value="0" data-price="4.50">
+    </label>
+    <label>Michelob Ultra ($5.00)
+      <input type="number" min="0" value="0" data-price="5.00">
+    </label>
+    <label>Twisted Tea ($5.50)
+      <input type="number" min="0" value="0" data-price="5.50">
+    </label>
+
+    <h3>Liquor</h3>
+    <label>Shot ($6.00)
+      <input type="number" min="0" value="0" data-price="6.00">
+    </label>
+    <label>Double ($10.00)
+      <input type="number" min="0" value="0" data-price="10.00">
+    </label>
+
+    <h3 style="margin-top:30px;">Total</h3>
+    <p id="totalDisplay" style="font-size:24px; font-weight:bold;">$0.00</p>
+
+    <button type="button" style="padding:10px 20px; font-size:18px; cursor:pointer; background:#c9a227; border:none; color:black; margin-top:10px;">
+      Visual Only – No Submission
+    </button>
+
+  </div>
+</section>
+
+<script>
+  const inputs = document.querySelectorAll('#orderForm input[type="number"]');
+  const totalDisplay = document.getElementById('totalDisplay');
+
+  function updateTotal() {
+    let total = 0;
+    inputs.forEach(input => {
+      const qty = parseFloat(input.value) || 0;
+      const price = parseFloat(input.dataset.price);
+      total += qty * price;
+    });
+    totalDisplay.textContent = '$' + total.toFixed(2);
+  }
+
+  inputs.forEach(input => input.addEventListener('input', updateTotal));
+</script>
   </footer>
 </body>
 </html>
+
